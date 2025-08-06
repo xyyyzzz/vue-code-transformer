@@ -1,0 +1,42 @@
+{
+  "name": "vue-code-transformer",
+  "version": "1.0.0",
+  "description": "Codemod tool for Vue projects, built using jscodeshift, postcss, and vue-eslint-parser",
+  "type": "module",
+  "bin": {
+    "vct": "./bin/vue-code-transformer.js"
+  },
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "scripts": {
+    "test-cli-css:out-place": "vct -t tests/transformations/change-css-declaration-migration.js -m out-place -i tests/test-fixtures -o tests/test-fixtures-output",
+    "test-cli-js:out-place": "vct -t tests/transformations/change-js-variable-migration.js -m out-place -i tests/test-fixtures -o tests/test-fixtures-output",
+    "test-cli-vue:out-place": "vct -t tests/transformations/change-vue-tag-migration.js -m out-place -i tests/test-fixtures -o tests/test-fixtures-output",
+    "test-cli-all:out-place": "vct -t tests/transformations/change-css-declaration-migration.js tests/transformations/change-js-variable-migration.js tests/transformations/change-vue-tag-migration.js -m out-place -i tests/test-fixtures -o tests/test-fixtures-output",
+    "test-cli-css:dry": "vct -t tests/transformations/change-css-declaration-migration.js -m dry -i tests/test-fixtures -o tests/test-fixtures-output",
+    "test-cli-js:dry": "vct -t tests/transformations/change-js-variable-migration.js -m dry -i tests/test-fixtures -o tests/test-fixtures-output",
+    "test-cli-vue:dry": "vct -t tests/transformations/change-vue-tag-migration.js -m dry -i tests/test-fixtures -o tests/test-fixtures-output",
+    "test-cli-all:dry": "vct -t tests/transformations/change-css-declaration-migration.js tests/transformations/change-js-variable-migration.js tests/transformations/change-vue-tag-migration.js -m dry -i tests/test-fixtures -o tests/test-fixtures-output",
+    "test-api-css:out-place": "node tests/index.js css out-place tests/test-fixtures-output",
+    "test-api-js:out-place": "node tests/index.js js out-place tests/test-fixtures-output",
+    "test-api-vue:out-place": "node tests/index.js vue out-place tests/test-fixtures-output",
+    "test-api-all:out-place": "node tests/index.js all out-place tests/test-fixtures-output",
+    "test-api-css:dry": "node tests/index.js css dry",
+    "test-api-js:dry": "node tests/index.js js dry",
+    "test-api-vue:dry": "node tests/index.js vue dry",
+    "test-api-all:dry": "node tests/index.js all dry"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vue/compiler-dom": "^3.4.15",
+    "chalk": "^4.1.2",
+    "commander": "^11.1.0",
+    "jscodeshift": "^17.3.0",
+    "postcss": "^8.4.35",
+    "postcss-scss": "^4.0.9",
+    "vue-eslint-parser": "^9.4.2"
+  }
+}
