@@ -24,6 +24,7 @@ jobs:
         run: npm ci
       - name: Run Tests
         run: |
+          npm link
           npm run test-cli-all:out-place
           npm run test-cli-all:dry
           npm run test-api-all:out-place
