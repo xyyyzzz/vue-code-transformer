@@ -1,7 +1,11 @@
 {
   "name": "vue-code-transformer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Codemod tool for Vue projects, built using jscodeshift, postcss, and vue-eslint-parser",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xyyyzzz/vue-code-transformer"
+  },
   "type": "module",
   "bin": {
     "vct": "./bin/vue-code-transformer.js"
