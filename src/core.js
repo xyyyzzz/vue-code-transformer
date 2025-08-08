@@ -10,12 +10,21 @@ global.errors = new Map();
 // get all file paths in output directory
 function getFilesFromDir(dir) {
     const resolvedPaths = [];
-    fs.readdirSync(dir, { recursive: true }).forEach((pathString) => {
-        const resolvedPath = path.resolve(dir, pathString);
-        if (fs.lstatSync(resolvedPath).isFile()) {
-            resolvedPaths.push(resolvedPath);
+    const stack = [path.resolve(dir)];
+
+    while (stack.length > 0) {
+        const currentDir = stack.pop();
+        const entries = fs.readdirSync(currentDir, { withFileTypes: true });
+
+        for (const entry of entries) {
+            const fullPath = path.join(currentDir, entry.name);
+            if (entry.isFile()) {
+                resolvedPaths.push(fullPath);
+            } else if (entry.isDirectory()) {
+                stack.push(fullPath);
+            }
         }
-    });
+    }
     return resolvedPaths;
 }
 
@@ -160,7 +169,9 @@ function vueCodeTransformer(transformationModules, inputPaths, options) {
     } else {
         outputPaths = inputPaths;
     }
+    console.log('output paths', outputPaths)
     let resolvedPaths = resolvePaths(outputPaths);
+    console.log('resolved paths', resolvedPaths)
     for (const transformationModule of transformationModules) {
         let transformRule = transformationModule.ruleName;
         console.log(chalk.bold.magenta(`\u{1F3D7}  Running ${transformRule}`));
