@@ -45,11 +45,14 @@ export default defineTransformation({
 
 
 ## Installation
+```
+npm install vue-code-transformer
+```
 
 ## CLI Usage
 ### Basic Command
 ```
-vue-code-transformer \
+npx vue-code-transformer \
   -t <transformation_path> \
   -m <mode> \
   -i <input_files> \
