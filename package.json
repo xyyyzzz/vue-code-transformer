@@ -1,7 +1,15 @@
 {
   "name": "vue-code-transformer",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Codemod tool for Vue projects, built using jscodeshift, postcss, and vue-eslint-parser",
+  "keywords": [
+    "css",
+    "js",
+    "sfc",
+    "vue",
+    "codemod",
+    "frontend"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/xyyyzzz/vue-code-transformer"
@@ -33,7 +41,7 @@
     "test-api-all:dry": "node tests/index.js all dry"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@vue/compiler-dom": "^3.4.15",
     "chalk": "^4.1.2",
